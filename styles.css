@@ -475,18 +475,49 @@ img { max-width: 100%; display: block; }
 
 /* Contact strip */
 .contact-strip {
-  background: var(--sky);
+  /* Matches assets/images/dry-ice-machine.png's background exactly so the
+     illustration blends in with no visible rectangle. */
+  background: #2E83C4;
   color: var(--cream);
   padding: 48px 0;
   border-bottom: 4px solid var(--ink);
 }
 
 .contact-grid {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 32px;
 }
-@media (min-width: 640px) {
-  .contact-grid { grid-template-columns: 1fr 1fr; }
+@media (min-width: 768px) {
+  .contact-grid {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-image {
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.contact-image img {
+  height: 220px;
+  width: auto;
+  pointer-events: none;
+}
+@media (min-width: 768px) {
+  .contact-image {
+    margin-right: 32px;
+  }
+  .contact-image img {
+    height: 300px;
+  }
 }
 
 address {
@@ -513,6 +544,9 @@ address {
   flex-direction: column;
   gap: 12px;
   align-self: start;
+}
+.contact-info .social-links {
+  margin-top: 16px;
 }
 .social-links a {
   color: var(--cream);
