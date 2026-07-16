@@ -160,6 +160,7 @@ img { max-width: 100%; display: block; }
   line-height: 1.2;
   margin: 0 0 32px;
   letter-spacing: 0.5px;
+  -webkit-text-stroke: 0.5px #2A2416;
   text-shadow: 3px 3px 0 #2A2416;
 }
 
