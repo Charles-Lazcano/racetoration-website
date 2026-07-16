@@ -154,12 +154,13 @@ img { max-width: 100%; display: block; }
 }
 
 .hero-headline {
-  font-family: 'Yellowtail', cursive;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
   color: var(--sky);
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
-  line-height: 1.1;
+  font-size: clamp(2.2rem, 7vw, 3.8rem);
+  line-height: 1.15;
   margin: 0 0 32px;
-  -webkit-text-stroke: 1px var(--ink);
+  -webkit-text-stroke: 0.5px var(--ink);
   text-shadow: 2px 2px 0 rgba(43,33,24,0.15);
 }
 
