@@ -161,7 +161,7 @@ img { max-width: 100%; display: block; }
   line-height: 1.2;
   margin: 0 0 32px;
   -webkit-text-stroke: 0.5px var(--ink);
-  text-shadow: 2px 2px 0 rgba(43,33,24,0.15);
+  text-shadow: 3px 3px 0 var(--ink), 6px 6px 10px rgba(43,33,24,0.3);
 }
 
 .hero-meta {
