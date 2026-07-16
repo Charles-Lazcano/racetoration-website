@@ -154,14 +154,13 @@ img { max-width: 100%; display: block; }
 }
 
 .hero-headline {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 800;
-  color: var(--sky);
+  font-family: 'Anton', sans-serif;
+  color: #FDF6E3;
   font-size: clamp(2rem, 6.5vw, 3.4rem);
   line-height: 1.2;
   margin: 0 0 32px;
-  -webkit-text-stroke: 0.5px var(--ink);
-  text-shadow: 2px 2px 0 var(--ink);
+  letter-spacing: 0.5px;
+  text-shadow: 3px 3px 0 #2A2416;
 }
 
 .hero-meta {
