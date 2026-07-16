@@ -13,6 +13,25 @@ if (isIOS) {
   });
 }
 
+const baGrid = document.querySelector(".ba-grid");
+const baDots = document.querySelectorAll(".ba-dot");
+
+if (baGrid && baDots.length) {
+  const baCards = Array.from(baGrid.querySelectorAll(".ba-card"));
+  const dotObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = baCards.indexOf(entry.target);
+          baDots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+        }
+      });
+    },
+    { root: baGrid, threshold: 0.6 }
+  );
+  baCards.forEach((card) => dotObserver.observe(card));
+}
+
 const form = document.getElementById("appointment-form");
 const submitBtn = document.getElementById("submit-btn");
 const successEl = document.getElementById("form-success");
