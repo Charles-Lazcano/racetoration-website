@@ -1,6 +1,3 @@
-// TODO: replace with your real Web3Forms access key from https://web3forms.com
-const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
-
 document.getElementById("year").textContent = new Date().getFullYear();
 
 const isIOS =
@@ -36,6 +33,8 @@ const form = document.getElementById("appointment-form");
 const submitBtn = document.getElementById("submit-btn");
 const successEl = document.getElementById("form-success");
 const errorEl = document.getElementById("form-error");
+const errorMessageEl = document.getElementById("form-error-message");
+const DEFAULT_ERROR_MESSAGE = errorMessageEl.textContent;
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -46,14 +45,14 @@ form.addEventListener("submit", async (event) => {
   submitBtn.textContent = "Sending...";
 
   const formData = new FormData(form);
-  formData.append("access_key", WEB3FORMS_ACCESS_KEY);
-  formData.append("subject", "New Appointment Request — Racetoration");
+  const payload = Object.fromEntries(formData.entries());
+  payload.botcheck = form.elements.botcheck.checked;
 
   try {
-    const response = await fetch("https://api.web3forms.com/submit", {
+    const response = await fetch("/api/contact", {
       method: "POST",
-      headers: { Accept: "application/json" },
-      body: formData,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
     });
     const result = await response.json();
 
@@ -61,9 +60,12 @@ form.addEventListener("submit", async (event) => {
       form.hidden = true;
       successEl.hidden = false;
     } else {
-      throw new Error(result.message || "Submission failed");
+      throw new Error(result.error || "Submission failed");
     }
   } catch (err) {
+    errorMessageEl.textContent = err.message && err.message !== "Submission failed"
+      ? err.message
+      : DEFAULT_ERROR_MESSAGE;
     errorEl.hidden = false;
     submitBtn.disabled = false;
     submitBtn.textContent = originalLabel;

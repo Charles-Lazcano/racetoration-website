@@ -259,7 +259,7 @@
 
       <div class="appointment-form-wrap">
         <form id="appointment-form" class="appointment-form" novalidate>
-          <!-- Honeypot field for Web3Forms spam protection -->
+          <!-- Honeypot field for spam protection: real users never fill this in -->
           <input type="checkbox" name="botcheck" class="botcheck" style="display:none" tabindex="-1" autocomplete="off">
 
           <div class="form-row">
@@ -303,11 +303,11 @@
 
         <div id="form-success" class="form-feedback form-success" hidden>
           <span class="check" aria-hidden="true">✓</span>
-          <p>Got it! We'll reach out shortly to confirm your appointment. — Racetoration</p>
+          <p>Thanks! We'll get back to you shortly.</p>
         </div>
 
         <div id="form-error" class="form-feedback form-error" hidden>
-          <p>Something went wrong sending your request. Give us a call instead:</p>
+          <p id="form-error-message">Something went wrong sending your request. Give us a call instead:</p>
           <!-- TODO: replace with the shop's real phone number -->
           <a class="tel-link" href="tel:+12100000000">(210) 000-0000</a>
         </div>
