@@ -746,3 +746,7 @@ input:focus, textarea:focus {
 .footer-inner .social-links a {
   color: var(--cream);
 }
+.footer-credit {
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
