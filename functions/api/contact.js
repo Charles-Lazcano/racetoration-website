@@ -3,7 +3,6 @@ const ALLOWED_ORIGINS = new Set([
   "https://www.racetoration.com",
 ]);
 
-const TO_EMAIL = "clamb9475@gmail.com";
 const FROM_EMAIL = "Racetoration Website <forms@racetoration.com>";
 
 const REQUIRED_FIELDS = ["name", "email", "phone", "make", "model", "year"];
@@ -83,7 +82,7 @@ export async function onRequestPost(context) {
     return jsonResponse(request, { success: false, error: "Please enter a valid vehicle year." }, 400);
   }
 
-  if (!env.RESEND_API_KEY) {
+  if (!env.RESEND_API_KEY || !env.TO_EMAIL) {
     return jsonResponse(request, { success: false, error: "Server is not configured to send email." }, 500);
   }
 
@@ -118,7 +117,7 @@ export async function onRequestPost(context) {
       },
       body: JSON.stringify({
         from: FROM_EMAIL,
-        to: [TO_EMAIL],
+        to: [env.TO_EMAIL],
         reply_to: email,
         subject: `New quote request from ${name} — racetoration.com`,
         text: textBody,
