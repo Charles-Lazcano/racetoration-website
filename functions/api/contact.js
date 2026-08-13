@@ -80,7 +80,15 @@ function buildHtmlEmail({ name, email, phone, make, model, year, message, timest
   const safeVehicle = htmlEscape(`${year} ${make} ${model}`);
   const safeMessage = htmlEscape(message || "(none provided)").replace(/\n/g, "<br>");
   const safeTimestamp = htmlEscape(timestamp);
-  const mailtoHref = `mailto:${encodeURIComponent(email)}`;
+  // Pre-fills the reply draft. Built from the raw (unescaped) values on
+  // purpose — this is a mailto URL parameter, not HTML, so htmlEscape()
+  // would leak literal "&amp;" etc. into the customer's draft. encodeURIComponent()
+  // is the correct + sufficient escaping for this context.
+  const replySubject = "Re: Your quote request — Racetoration";
+  const replyBody = `Hi ${name},\n\nThanks for reaching out about your ${year} ${make} ${model}.\n\n`;
+  const mailtoHref = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(
+    replySubject
+  )}&body=${encodeURIComponent(replyBody)}`;
 
   return `<!doctype html>
 <html>
