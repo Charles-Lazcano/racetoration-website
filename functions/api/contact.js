@@ -4,6 +4,10 @@ const ALLOWED_ORIGINS = new Set([
 ]);
 
 const FROM_EMAIL = "Racetoration Website <forms@racetoration.com>";
+// Email clients only render remotely-hosted images, so this points at the
+// live site rather than a local file. Background matches BRAND.headerBg
+// exactly, so it blends into the header with no visible edges.
+const LOGO_URL = "https://racetoration.com/assets/images/logo-wordmark.png";
 
 const REQUIRED_FIELDS = ["name", "email", "phone", "make", "model", "year"];
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -101,8 +105,8 @@ function buildHtmlEmail({ name, email, phone, make, model, year, message, timest
             <!-- Header -->
             <tr>
               <td style="background-color:${BRAND.headerBg}; padding:28px 32px 24px; text-align:center;">
-                <div style="font-family:Arial, Helvetica, sans-serif; font-weight:bold; font-size:32px; letter-spacing:0.08em; color:${BRAND.ink};">RACETORATION</div>
-                <div style="font-family:Arial, Helvetica, sans-serif; font-weight:bold; font-size:14px; letter-spacing:0.08em; text-transform:uppercase; color:${BRAND.redDark}; margin-top:8px;">New Quote Request</div>
+                <img src="${LOGO_URL}" width="176" height="56" alt="Racetoration" style="display:block; margin:0 auto; border:0; outline:none; text-decoration:none;">
+                <div style="font-family:Arial, Helvetica, sans-serif; font-weight:bold; font-size:14px; letter-spacing:0.08em; text-transform:uppercase; color:${BRAND.redDark}; margin-top:14px;">New Quote Request</div>
                 <div style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:${BRAND.muted}; margin-top:6px;">Received: ${safeTimestamp}</div>
               </td>
             </tr>

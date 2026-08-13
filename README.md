@@ -6,19 +6,15 @@ Marketing site and appointment-request system for **Racetoration LLC**, a full-s
 
 ## Screenshots
 
-| Homepage | Services | Before & After |
-|---|---|---|
-| ![Homepage](docs/screenshots/homepage.png) | ![Services](docs/screenshots/services.png) |
+![Homepage](docs/screenshots/homepage.png)
 
 ### Booking System
 
-The appointment request form collects the customer's contact info and vehicle details, then sends it straight to the shop's inbox as a formatted email.
+The appointment request form collects the customer's contact info and vehicle details, then sends it straight to the shop's inbox as a branded HTML email.
 
 | Request Form | Received Appointment Request |
 |---|---|
 | ![Appointment request form](docs/screenshots/booking-form.png) | ![Received appointment request email](docs/screenshots/booking-received.png) |
-
-*(Drop your screenshots into `docs/screenshots/` using the filenames above — the last one should show a submitted request as it arrives in the inbox.)*
 
 ## Features
 
