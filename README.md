@@ -8,7 +8,7 @@ Marketing site and appointment-request system for **Racetoration LLC**, a full-s
 
 | Homepage | Services | Before & After |
 |---|---|---|
-| ![Homepage](docs/screenshots/homepage.png) | ![Services](docs/screenshots/services.png) | ![Before and after gallery](docs/screenshots/before-after.png) |
+| ![Homepage](docs/screenshots/homepage.png) | ![Services](docs/screenshots/services.png) |
 
 ### Booking System
 
